@@ -145,7 +145,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; }
 """, unsafe_allow_html=True)
 
 # ─── Backend API URL ────────────────────────────────────────────────────────────
-API_URL = "http://localhost:8000"
+API_URL = "https://healthbridge-backend-ws6z.onrender.com"
 
 # ─── Session State ──────────────────────────────────────────────────────────────
 if "token" not in st.session_state:
