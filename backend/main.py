@@ -1,10 +1,9 @@
-from fastapi import FastAPI, HTTPException, Depends, status
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from contextlib import asynccontextmanager
 import uvicorn
 from database import init_db
-from routers import auth, symptom, medicine, health
+from routers import auth, symptom, medicine, health, admin
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -30,6 +29,7 @@ app.include_router(auth.router,     prefix="/auth",     tags=["Authentication"])
 app.include_router(symptom.router,  prefix="/symptom",  tags=["Symptom Analysis"])
 app.include_router(medicine.router, prefix="/medicine",  tags=["Medicine Info"])
 app.include_router(health.router,   prefix="/health",    tags=["Health Records"])
+app.include_router(admin.router,    prefix="/admin",     tags=["Admin"])
 
 @app.get("/")
 def root():
